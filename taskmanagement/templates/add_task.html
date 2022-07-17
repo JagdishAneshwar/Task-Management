@@ -1,0 +1,32 @@
+{% extends "base2.html" %}
+
+{% block content %}
+
+
+<form method="POST" class="container">
+  {% csrf_token %}
+  <div class="form-container" align="left">
+    <div class="add_member">
+      <fieldset>
+        <legend class="pb-2 text-info" style="border-bottom: 1px solid gray;">Add Task</legend>
+      </fieldset>
+      <div class="form-group">
+        <fieldset>
+          <label class="form-label" for="name">Name</label>
+          <input class="form-control col-4" name="name" id="name" type="text">
+        </fieldset>
+      </div>
+      <div class="form-group">
+        <label for="exampleTextarea" class="form-label mt-4">Description</label>
+        <textarea class="form-control" name="desc" id="desc" rows="3"
+          style="position: relative !important; z-index: auto !important;"></textarea>
+      </div>
+      <div>
+        <label fot="toselectdate" class="form-label mt-4">Due</label>
+        <input type="date" class="form-control col-4" name="due" id="due">
+      </div>
+      <button type="submit" class="btn mt-4">Add Task</button>
+    </div>
+</form>
+
+{% endblock %}

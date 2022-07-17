@@ -1,0 +1,28 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block content %}
+<div align="CENTER">
+	<h1 class="fw-bold mb-4 border-bottom border-2 pb-3">TEAM MEMBERS</h1>
+	{% for item in lis %}
+	<div class="card border p-3 mb-4 bg-light col-7" style="box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.19);">
+		<div class="row">
+			<div class="col col-2">
+				<div class="img-fluid" align="left"><img src="{{item.upload.url}}" width=100%>
+				</div>
+				<div class="badge bg-info ps-4 pe-4 mt-2">Assigned</div>
+			</div>
+			<div class="col col-10">
+				<div class="fs-4 p-2 pt-1 fw-bold card-header bg-light text-dark" align="left">{{item.name}}</div>
+				<div class="p-2 text-dark border-start border-info border-4 p-2" align="left">Role: {{item.role}}</div>
+				<div class="border-top border-gray pt-1" align="left">
+					<form action="{% url 'delete_member' item.id %}" method="POST" class="d-inline">
+						{% csrf_token %}
+						<input type="submit" value="Delete" class="btn btn-outline-danger btn-sm">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

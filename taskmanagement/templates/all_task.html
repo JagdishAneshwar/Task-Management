@@ -1,0 +1,21 @@
+{% extends "base2.html" %}
+{% block content %}
+<div align="center">
+	<h1 class="fw-bold mb-4 border-bottom border-2 pb-3">ALL TASKS</h1>
+	{% for item in lis %}
+			<div class="card border p-3 mb-4 bg-light" style="box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.19); width: 800px; height: 260px;">
+				<div class="fs-3 card-header bg-light mb-3 text-black" align="left">{{item.name}}</div>
+				<div class="border-start border-info border-4 p-2" align="left">
+					<div style="font-size: 18px;"> <font color="black">Desc: </font>{{item.desc}}</div>
+					<div><font color="black">Due: </font>{{item.due}}</div>
+				</div>
+				<div class="border-top border-gray pt-3" align="left">
+					<form action="{% url 'delete_task' item.id %}" method="POST" class="d-inline">
+					{% csrf_token %}
+					<input type="submit" value="delete" class="btn btn-outline-danger">
+					</form>
+				</div>
+			</div>
+	{% endfor %}
+</div>
+{% endblock %}
